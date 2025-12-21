@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
@@ -13,7 +14,6 @@
   --secondary:#caa76a;
   --bg:#fffaf3;
 }
-
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -32,15 +32,11 @@ section{
   z-index:3;
 }
 
-/* ===== GAPURA BELAH ===== */
+/* ===== GAPURA ===== */
 .gapura{
-  position:fixed;
-  top:0;bottom:0;
-  width:50%;
-  background:
-    linear-gradient(120deg,#e7c97a,#caa76a,#e7c97a);
-  z-index:999;
-  transition:transform 1.5s ease;
+  position:fixed;top:0;bottom:0;width:50%;
+  background:linear-gradient(120deg,#e7c97a,#caa76a,#e7c97a);
+  z-index:999;transition:1.5s ease;
 }
 .gapura.left{left:0}
 .gapura.right{right:0}
@@ -52,19 +48,16 @@ section{
   position:fixed;top:0;bottom:0;width:22px;
   background:linear-gradient(120deg,#e7c97a,#caa76a,#e7c97a);
   border-radius:100px;
-  opacity:.9;
   filter:drop-shadow(0 0 10px rgba(202,167,106,.6));
-  z-index:1;
 }
-.janur.left{left:10px;transform:skewY(4deg)}
-.janur.right{right:10px;transform:skewY(-4deg)}
+.janur.left{left:10px}
+.janur.right{right:10px}
 
 .mega{
   position:fixed;inset:0;
   background:
     radial-gradient(circle at 20% 30%, rgba(202,167,106,.15), transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(202,167,106,.12), transparent 45%);
-  z-index:0;
 }
 
 .lung{
@@ -72,12 +65,9 @@ section{
   border-radius:50%;
   border:2px solid rgba(202,167,106,.4);
   box-shadow:inset 0 0 25px rgba(202,167,106,.35);
-  z-index:0;
 }
 .lung::before,.lung::after{
-  content:'';
-  position:absolute;
-  inset:25px;
+  content:'';position:absolute;inset:25px;
   border-radius:50%;
   border:2px dashed rgba(202,167,106,.45);
 }
@@ -86,20 +76,6 @@ section{
 .lung.tr{top:-40px;right:-40px}
 .lung.bl{bottom:-40px;left:-40px}
 .lung.br{bottom:-40px;right:-40px}
-
-/* ===== PARTIKEL ===== */
-.spark{
-  position:fixed;width:4px;height:4px;
-  background:rgba(202,167,106,.9);
-  border-radius:50%;
-  animation:float 15s linear infinite;
-  z-index:0;
-}
-@keyframes float{
-  from{transform:translateY(110vh);opacity:0}
-  10%{opacity:1}
-  to{transform:translateY(-10vh);opacity:0}
-}
 
 /* ===== BATIK ===== */
 .batik{
@@ -112,38 +88,20 @@ section{
   );
 }
 
-/* ===== GUNUNGAN ===== */
-.gunungan{
-  width:90px;height:150px;
-  margin:0 auto 20px;
-  background:linear-gradient(#e7c98b,#b3874f);
-  clip-path:polygon(50% 0%,90% 80%,75% 100%,25% 100%,10% 80%);
-}
-
 /* ===== OPENING ===== */
 #opening{
   position:fixed;inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  background:rgba(255,250,243,.95);
+  display:flex;align-items:center;justify-content:center;
   z-index:1000;
-  background:rgba(255,250,243,.9);
 }
 .opening-box{
-  background:#fff;
-  padding:40px;
-  border-radius:30px;
-  text-align:center;
+  background:#fff;padding:40px;border-radius:30px;
   box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
-
 .btn{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  padding:14px 28px;
-  border-radius:30px;
-  cursor:pointer;
+  background:var(--primary);color:#fff;
+  border:none;padding:14px 28px;border-radius:30px;
 }
 
 /* ===== HERO ===== */
@@ -154,31 +112,55 @@ section{
   justify-content:center;
 }
 .hero-box{
-  background:rgba(255,255,255,.95);
-  padding:45px;
-  border-radius:30px;
+  background:#fff;padding:45px;border-radius:30px;
   box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
-/* ===== COUNTDOWN ===== */
 .countdown{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap
 }
 .countdown div{
-  background:#fff;
-  padding:12px;
-  border-radius:15px;
-  min-width:70px;
+  background:#fff;padding:12px;border-radius:15px;min-width:70px
 }
 
-footer{
-  padding:40px;
-  text-align:center;
-  font-size:14px;
+/* ===== CARD ===== */
+.card{
+  background:#fff;
+  padding:25px;
+  border-radius:24px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
+
+/* ===== GALLERY ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+}
+.gallery img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+/* ===== NAV ===== */
+.nav-bottom{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  border-radius:30px;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
+  display:flex;
+  gap:20px;
+  padding:12px 20px;
+  z-index:99;
+}
+.nav-bottom a{color:var(--primary);font-size:20px}
+
+footer{padding:40px;text-align:center}
 </style>
 </head>
 
@@ -192,57 +174,68 @@ footer{
 <div class="janur left"></div>
 <div class="janur right"></div>
 <div class="mega"></div>
-
 <div class="lung tl"></div>
 <div class="lung tr"></div>
 <div class="lung bl"></div>
 <div class="lung br"></div>
 
-<div class="spark" style="left:15%;animation-delay:0s"></div>
-<div class="spark" style="left:35%;animation-delay:5s"></div>
-<div class="spark" style="left:55%;animation-delay:9s"></div>
-<div class="spark" style="left:75%;animation-delay:3s"></div>
-
 <!-- OPENING -->
 <div id="opening">
   <div class="opening-box">
-    <div class="gunungan"></div>
     <p>Kepada Yth.</p>
     <h2 id="guestName">Tamu Undangan</h2>
-
-    <!-- AKSARA -->
-    <p style="font-size:20px;letter-spacing:2px">
-      ꦫꦼꦁꦒ꧀ꦒ & ꦥꦸꦠꦿꦶ<br>
-      ᮛᮨᮍ᮪ᮌᮌ ᮕᮥᮒᮢᮤ
-    </p>
-
     <h1>Rengga & Putri</h1>
     <p>Minggu, 25 Agustus 2025</p>
     <button class="btn" onclick="openInvitation()">Buka Undangan</button>
   </div>
 </div>
 
-<audio id="music" muted loop>
-  <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b6e7c14.mp3">
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b6e7c14.mp3">
 </audio>
 
+<!-- HERO -->
 <section id="hero" class="batik">
   <div class="hero-box">
-    <div class="gunungan"></div>
-    <h1>Rengga <span style="color:var(--primary)">&</span> Putri</h1>
+    <h1>Rengga & Putri</h1>
     <p>Minggu, 25 Agustus 2025</p>
-
     <div class="countdown">
       <div><h3 id="d">00</h3><small>Hari</small></div>
       <div><h3 id="h">00</h3><small>Jam</small></div>
       <div><h3 id="m">00</h3><small>Menit</small></div>
       <div><h3 id="s">00</h3><small>Detik</small></div>
     </div>
+  </div>
+</section>
 
-    <p style="margin-top:20px;font-style:italic;color:#6b4b2a">
-      “Mugi tansah pinaringan katresnan,  
-      janten kulawarga sakinah, mawaddah, warahmah.”
-    </p>
+<!-- ACARA -->
+<section id="event">
+  <h2>Akad & Resepsi</h2>
+  <div class="card">
+    <p><b>Waktu:</b> 10.00 WIB – Selesai</p>
+    <p><b>Tempat:</b> Pendopo Ndalem Rahayu</p>
+    <a class="btn" href="https://maps.google.com" target="_blank">Buka Google Maps</a>
+  </div>
+</section>
+
+<!-- GALERI -->
+<section id="gallery" class="batik">
+  <h2>Galeri</h2>
+  <div class="gallery">
+    <img src="https://source.unsplash.com/600x600/?wedding">
+    <img src="https://source.unsplash.com/601x600/?wedding">
+    <img src="https://source.unsplash.com/602x600/?wedding">
+    <img src="https://source.unsplash.com/603x600/?wedding">
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <h2>Reservasi Kehadiran</h2>
+  <div class="card">
+    <input id="name" placeholder="Nama" style="width:100%;padding:12px"><br><br>
+    <textarea id="msg" placeholder="Ucapan & Konfirmasi" style="width:100%;padding:12px"></textarea><br><br>
+    <button class="btn" onclick="sendWA()">Kirim via WhatsApp</button>
   </div>
 </section>
 
@@ -250,15 +243,21 @@ footer{
 Maturnuwun & Hatur Nuhun atas doa restu 🙏
 </footer>
 
+<!-- NAV -->
+<div class="nav-bottom">
+  <a href="#hero"><i class="fa fa-home"></i></a>
+  <a href="#event"><i class="fa fa-calendar"></i></a>
+  <a href="#gallery"><i class="fa fa-image"></i></a>
+  <a href="#rsvp"><i class="fa fa-paper-plane"></i></a>
+</div>
+
 <script>
-const params=new URLSearchParams(window.location.search);
-guestName.innerText=params.get("to")||"Tamu Undangan";
+guestName.innerText=new URLSearchParams(location.search).get("to")||"Tamu Undangan";
 
 function openInvitation(){
   opening.style.display="none";
   gLeft.classList.add("open");
   gRight.classList.add("open");
-  music.muted=false;
   music.play();
 }
 
@@ -270,6 +269,12 @@ setInterval(()=>{
   m.innerText=Math.floor(diff/60000)%60;
   s.innerText=Math.floor(diff/1000)%60;
 },1000);
+
+function sendWA(){
+  const n=name.value;
+  const m=msg.value;
+  window.open(`https://wa.me/6281234567890?text=Halo saya ${n}%0A${m}`);
+}
 </script>
 
 </body>
