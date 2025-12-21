@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
 :root{
@@ -22,43 +21,85 @@ body{
   background:var(--bg);
   overflow-x:hidden;
 }
-
 h1,h2{font-family:Playfair Display,serif}
 
 section{
-  padding:70px 20px;
+  padding:80px 20px;
   max-width:1000px;
   margin:auto;
   text-align:center;
   position:relative;
-  z-index:2;
+  z-index:3;
 }
+
+/* ===== GAPURA BELAH ===== */
+.gapura{
+  position:fixed;
+  top:0;bottom:0;
+  width:50%;
+  background:
+    linear-gradient(120deg,#e7c97a,#caa76a,#e7c97a);
+  z-index:999;
+  transition:transform 1.5s ease;
+}
+.gapura.left{left:0}
+.gapura.right{right:0}
+.gapura.open.left{transform:translateX(-110%)}
+.gapura.open.right{transform:translateX(110%)}
 
 /* ===== ORNAMEN ===== */
-.janur,.lung{
-  pointer-events:none;
-  position:fixed;
-  z-index:1;
-}
-
 .janur{
-  top:0;bottom:0;
-  width:22px;
-  background:linear-gradient(to bottom,#e7c97a,#caa76a,#e7c97a);
+  position:fixed;top:0;bottom:0;width:22px;
+  background:linear-gradient(120deg,#e7c97a,#caa76a,#e7c97a);
   border-radius:100px;
-  opacity:.85;
+  opacity:.9;
+  filter:drop-shadow(0 0 10px rgba(202,167,106,.6));
+  z-index:1;
 }
 .janur.left{left:10px;transform:skewY(4deg)}
 .janur.right{right:10px;transform:skewY(-4deg)}
 
-.lung{
-  width:120px;height:120px;
-  opacity:.25;
+.mega{
+  position:fixed;inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(202,167,106,.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(202,167,106,.12), transparent 45%);
+  z-index:0;
 }
-.lung.top-left{top:0;left:0;background:radial-gradient(circle,var(--secondary),transparent 60%)}
-.lung.top-right{top:0;right:0;background:radial-gradient(circle,var(--secondary),transparent 60%)}
-.lung.bottom-left{bottom:0;left:0;background:radial-gradient(circle,var(--secondary),transparent 60%)}
-.lung.bottom-right{bottom:0;right:0;background:radial-gradient(circle,var(--secondary),transparent 60%)}
+
+.lung{
+  position:fixed;width:140px;height:140px;
+  border-radius:50%;
+  border:2px solid rgba(202,167,106,.4);
+  box-shadow:inset 0 0 25px rgba(202,167,106,.35);
+  z-index:0;
+}
+.lung::before,.lung::after{
+  content:'';
+  position:absolute;
+  inset:25px;
+  border-radius:50%;
+  border:2px dashed rgba(202,167,106,.45);
+}
+.lung::after{inset:45px}
+.lung.tl{top:-40px;left:-40px}
+.lung.tr{top:-40px;right:-40px}
+.lung.bl{bottom:-40px;left:-40px}
+.lung.br{bottom:-40px;right:-40px}
+
+/* ===== PARTIKEL ===== */
+.spark{
+  position:fixed;width:4px;height:4px;
+  background:rgba(202,167,106,.9);
+  border-radius:50%;
+  animation:float 15s linear infinite;
+  z-index:0;
+}
+@keyframes float{
+  from{transform:translateY(110vh);opacity:0}
+  10%{opacity:1}
+  to{transform:translateY(-10vh);opacity:0}
+}
 
 /* ===== BATIK ===== */
 .batik{
@@ -81,27 +122,19 @@ section{
 
 /* ===== OPENING ===== */
 #opening{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(#fffaf3,#fff);
+  position:fixed;inset:0;
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:999;
-  transition:opacity 1s,transform 1s;
+  z-index:1000;
+  background:rgba(255,250,243,.9);
 }
-#opening.hide{
-  opacity:0;
-  transform:scale(1.1);
-  pointer-events:none;
-}
-
 .opening-box{
   background:#fff;
-  padding:35px;
+  padding:40px;
   border-radius:30px;
   text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
 
 .btn{
@@ -114,7 +147,12 @@ section{
 }
 
 /* ===== HERO ===== */
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center}
+#hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 .hero-box{
   background:rgba(255,255,255,.95);
   padding:45px;
@@ -125,8 +163,8 @@ section{
 /* ===== COUNTDOWN ===== */
 .countdown{
   display:flex;
-  justify-content:center;
   gap:10px;
+  justify-content:center;
   flex-wrap:wrap;
 }
 .countdown div{
@@ -135,29 +173,6 @@ section{
   border-radius:15px;
   min-width:70px;
 }
-
-/* ===== CARD ===== */
-.card{
-  background:#fff;
-  padding:25px;
-  border-radius:25px;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-/* ===== NAV ===== */
-.nav-bottom{
-  position:fixed;
-  bottom:15px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#fff;
-  border-radius:30px;
-  padding:12px 20px;
-  display:flex;
-  gap:20px;
-  z-index:50;
-}
-.nav-bottom a{color:var(--primary);font-size:20px}
 
 footer{
   padding:40px;
@@ -169,18 +184,38 @@ footer{
 
 <body>
 
+<!-- GAPURA -->
+<div class="gapura left" id="gLeft"></div>
+<div class="gapura right" id="gRight"></div>
+
+<!-- ORNAMEN -->
 <div class="janur left"></div>
 <div class="janur right"></div>
-<div class="lung top-left"></div>
-<div class="lung top-right"></div>
-<div class="lung bottom-left"></div>
-<div class="lung bottom-right"></div>
+<div class="mega"></div>
 
+<div class="lung tl"></div>
+<div class="lung tr"></div>
+<div class="lung bl"></div>
+<div class="lung br"></div>
+
+<div class="spark" style="left:15%;animation-delay:0s"></div>
+<div class="spark" style="left:35%;animation-delay:5s"></div>
+<div class="spark" style="left:55%;animation-delay:9s"></div>
+<div class="spark" style="left:75%;animation-delay:3s"></div>
+
+<!-- OPENING -->
 <div id="opening">
   <div class="opening-box">
     <div class="gunungan"></div>
     <p>Kepada Yth.</p>
     <h2 id="guestName">Tamu Undangan</h2>
+
+    <!-- AKSARA -->
+    <p style="font-size:20px;letter-spacing:2px">
+      ꦫꦼꦁꦒ꧀ꦒ & ꦥꦸꦠꦿꦶ<br>
+      ᮛᮨᮍ᮪ᮌᮌ ᮕᮥᮒᮢᮤ
+    </p>
+
     <h1>Rengga & Putri</h1>
     <p>Minggu, 25 Agustus 2025</p>
     <button class="btn" onclick="openInvitation()">Buka Undangan</button>
@@ -196,14 +231,17 @@ footer{
     <div class="gunungan"></div>
     <h1>Rengga <span style="color:var(--primary)">&</span> Putri</h1>
     <p>Minggu, 25 Agustus 2025</p>
+
     <div class="countdown">
       <div><h3 id="d">00</h3><small>Hari</small></div>
       <div><h3 id="h">00</h3><small>Jam</small></div>
       <div><h3 id="m">00</h3><small>Menit</small></div>
       <div><h3 id="s">00</h3><small>Detik</small></div>
     </div>
+
     <p style="margin-top:20px;font-style:italic;color:#6b4b2a">
-      “Mugi tansah pinaringan katresnan, janten kulawarga sakinah.”
+      “Mugi tansah pinaringan katresnan,  
+      janten kulawarga sakinah, mawaddah, warahmah.”
     </p>
   </div>
 </section>
@@ -212,21 +250,16 @@ footer{
 Maturnuwun & Hatur Nuhun atas doa restu 🙏
 </footer>
 
-<div class="nav-bottom">
-  <a href="#hero"><i class="fa fa-home"></i></a>
-</div>
-
 <script>
 const params=new URLSearchParams(window.location.search);
 guestName.innerText=params.get("to")||"Tamu Undangan";
 
 function openInvitation(){
-  const o=document.getElementById("opening");
-  const m=document.getElementById("music");
-  o.classList.add("hide");
-  m.muted=false;
-  m.play();
-  setTimeout(()=>o.remove(),1000);
+  opening.style.display="none";
+  gLeft.classList.add("open");
+  gRight.classList.add("open");
+  music.muted=false;
+  music.play();
 }
 
 const target=new Date("2025-08-25T10:00:00+07:00").getTime();
