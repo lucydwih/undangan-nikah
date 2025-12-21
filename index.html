@@ -202,6 +202,49 @@
       font-size:14px;
       color:#777;
     }
+    /* ===== LUNG-LUNGAN ORNAMEN ===== */
+    .lung {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      opacity: .25;
+      z-index: 0;
+    }
+    
+    .lung.top-left {
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle at 30% 30%, var(--secondary), transparent 60%);
+    }
+    
+    .lung.top-right {
+      top: 0;
+      right: 0;
+      background: radial-gradient(circle at 70% 30%, var(--secondary), transparent 60%);
+    }
+    
+    .lung.bottom-left {
+      bottom: 0;
+      left: 0;
+      background: radial-gradient(circle at 30% 70%, var(--secondary), transparent 60%);
+    }
+    
+    .lung.bottom-right {
+      bottom: 0;
+      right: 0;
+      background: radial-gradient(circle at 70% 70%, var(--secondary), transparent 60%);
+    }
+    /* ===== ANIMASI GAPURA ===== */
+    #opening {
+      transition: transform 1.2s ease, opacity 1.2s ease;
+    }
+    
+    #opening.hide {
+      transform: scale(1.1);
+      opacity: 0;
+      pointer-events: none;
+    }
+
   </style>
 </head>
 
@@ -210,6 +253,11 @@
 <!-- JANUR -->
 <div class="janur left"></div>
 <div class="janur right"></div>
+<div class="lung top-left"></div>
+<div class="lung top-right"></div>
+<div class="lung bottom-left"></div>
+<div class="lung bottom-right"></div>
+
 
 <!-- OPENING -->
 <div id="opening">
@@ -305,8 +353,16 @@
     params.get("to") || "Tamu Undangan";
 
   function openInvitation(){
-    document.getElementById("opening").style.display="none";
-    document.getElementById("music").play();
+    const opening = document.getElementById("opening");
+    opening.classList.add("hide");
+  
+    const music = document.getElementById("music");
+    music.volume = 0.6;
+    music.play();
+  
+    setTimeout(() => {
+      opening.style.display = "none";
+    }, 1200);
   }
 
   const target = new Date("2025-08-25T10:00:00+07:00").getTime();
@@ -334,3 +390,4 @@
 
 </body>
 </html>
+
