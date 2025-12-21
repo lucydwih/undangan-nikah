@@ -2,345 +2,161 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Undangan Pernikahan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan | Lucy & Windy</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary:#7b2d26;
-      --secondary:#caa76a;
-      --bg:#fffaf3;
+      --cream: #fbf7f2;
+      --brown: #7a2e1f;
+      --gold: #d9b46f;
+      --text: #2e2e2e;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      background:var(--bg);
-      color:#333;
-      scroll-behavior:smooth;
-    }
-
-    h1,h2,h3 {
-      font-family:'Playfair Display',serif;
-    }
-
-    section {
-      padding:60px 20px;
-      max-width:1000px;
-      margin:auto;
-      text-align:center;
-    }
-
-    /* ===== OPENING ===== */
-    #opening {
-      position:fixed;
-      inset:0;
-      background:linear-gradient(to bottom,#fffaf3,#ffffff);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index:999;
-    }
-
-    .opening-box {
-      text-align:center;
-      padding:30px;
-    }
-
-    .opening-box h1 {
-      font-size:42px;
-      margin:10px 0;
-    }
-
-    .btn {
-      background:var(--primary);
-      color:#fff;
-      border:none;
-      padding:14px 28px;
-      border-radius:30px;
-      font-size:16px;
-      cursor:pointer;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
     }
 
     /* ===== HERO ===== */
-    #hero {
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:
-        radial-gradient(circle at 20% 20%, #cfe2ff 0 30%, transparent 35%),
-        radial-gradient(circle at 80% 30%, #bcd6ff 0 30%, transparent 35%),
-        #ffffff;
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
     }
 
+    /* JANUR ORNAMEN */
+    .janur {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 28px;
+      background: var(--gold);
+      border-radius: 100px;
+      opacity: 0.85;
+    }
+
+    .janur.left {
+      left: 12px;
+      transform: skewY(3deg);
+    }
+
+    .janur.right {
+      right: 12px;
+      transform: skewY(-3deg);
+    }
+
+    /* KONTEN */
     .hero-box {
-      background:rgba(255,255,255,0.85);
-      padding:40px;
-      border-radius:24px;
-      box-shadow:0 10px 30px rgba(0,0,0,.1);
+      background: #fff;
+      border-radius: 28px;
+      padding: 48px 32px;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
     }
 
-    .countdown {
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      margin-top:20px;
+    /* GUNUNGAN */
+    .gunungan {
+      width: 90px;
+      height: 140px;
+      margin: 0 auto 24px;
+      background: linear-gradient(180deg, #e6c48c, #a97c50);
+      clip-path: polygon(50% 0%, 90% 85%, 75% 100%, 25% 100%, 10% 85%);
     }
 
-    .countdown div {
-      background:#fff;
-      padding:12px;
-      border-radius:16px;
-      min-width:70px;
-      box-shadow:0 4px 10px rgba(0,0,0,.1);
+    .kepada {
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
     }
 
-    /* ===== CARD ===== */
-    .card {
-      background:#fff;
-      padding:25px;
-      border-radius:20px;
-      box-shadow:0 5px 15px rgba(0,0,0,.08);
-      margin-top:20px;
+    .guest {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
 
-    /* ===== GALLERY ===== */
-    .gallery {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-      gap:12px;
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 8px;
     }
 
-    .gallery img {
-      width:100%;
-      height:180px;
-      object-fit:cover;
-      border-radius:16px;
+    .date {
+      font-size: 14px;
+      margin-bottom: 28px;
     }
 
-    /* ===== NAV BOTTOM ===== */
-    .nav-bottom {
-      position:fixed;
-      bottom:15px;
-      left:50%;
-      transform:translateX(-50%);
-      background:#fff;
-      border-radius:30px;
-      box-shadow:0 5px 20px rgba(0,0,0,.15);
-      display:flex;
-      gap:20px;
-      padding:12px 20px;
-      z-index:50;
+    .open-btn {
+      background: var(--brown);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .3s;
     }
 
-    .nav-bottom a {
-      color:var(--primary);
-      font-size:20px;
-      text-decoration:none;
+    .open-btn:hover {
+      background: #5e2217;
     }
 
-    footer {
-      padding:40px;
-      text-align:center;
-      font-size:14px;
-      color:#777;
-    }
-          /* ===== ORNAMEN JANUR ===== */
-      .janur {
-        position: fixed;
-        top: 0;
-        width: 140px;
-        height: 100vh;
-        background-repeat: repeat-y;
-        background-size: contain;
-        opacity: 0.9;
-        z-index: 5;
-        pointer-events: none;
+    /* ===== DESKTOP ===== */
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
       }
-      
-      .janur.left {
-        left: 0;
-        background-image: url("data:image/svg+xml;utf8,\
-        <svg xmlns='http://www.w3.org/2000/svg' width='140' height='600'>\
-        <path d='M70 0 C20 80 120 160 70 240 C20 320 120 400 70 480 C20 560 120 640 70 720' \
-        fill='none' stroke='%23e6b84c' stroke-width='18' stroke-linecap='round'/>\
-        </svg>");
-      }
-      .janur.right {
-        right: 0;
-        transform: scaleX(-1);
-        background-image: url("data:image/svg+xml;utf8,\
-        <svg xmlns='http://www.w3.org/2000/svg' width='140' height='600'>\
-        <path d='M70 0 C20 80 120 160 70 240 C20 320 120 400 70 480 C20 560 120 640 70 720' \
-        fill='none' stroke='%23e6b84c' stroke-width='18' stroke-linecap='round'/>\
-        </svg>");
-      }
-      .gunungan {
-        width: 120px;
-        height: 180px;
-        margin: 0 auto 20px;
-        background: linear-gradient(180deg,#caa76a,#8b5e3c);
-        clip-path: polygon(50% 0%, 95% 90%, 5% 90%);
-        border-radius: 0 0 60px 60px;
-      }
-    .batik-divider {
-      height: 40px;
-      background:
-        repeating-linear-gradient(
-          45deg,
-          #caa76a,
-          #caa76a 10px,
-          #f2e2c4 10px,
-          #f2e2c4 20px
-        );
-      margin: 60px 0;
-      border-radius: 20px;
-    }
 
+      .hero-box {
+        padding: 56px 48px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+    }
   </style>
 </head>
+
 <body>
-<div class="janur left"></div>
-<div class="janur right"></div>
 
-<!-- ===== OPENING ===== -->
-<div id="opening">
-  <div class="gunungan"></div>
-  <div class="opening-box">
-    <p>Kepada Yth.</p>
-    <h2 id="guestName">Tamu Undangan</h2>
-    <h1>Lucy & Windy</h1>
-    <p>Minggu, Comming Soon 2027</p>
-    <button class="btn" onclick="openInvitation()">Buka Undangan</button>
-  </div>
-</div>
+  <section class="hero">
+    <!-- ORNAMEN JANUR -->
+    <div class="janur left"></div>
+    <div class="janur right"></div>
 
-<!-- ===== AUDIO ===== -->
-<audio id="music" src="music.mp3"></audio>
+    <!-- KONTEN -->
+    <div class="hero-box">
+      <div class="gunungan"></div>
 
-<!-- ===== HERO ===== -->
-<section id="hero">
-  <div class="hero-box">
-    <h1>Lucy <span style="color:var(--primary)">&</span> Putri</h1>
-    <p>Minggu, Comming Soon 2027</p>
+      <p class="kepada">Kepada Yth.</p>
+      <div class="guest">LUCY</div>
 
-    <div class="countdown">
-      <div><h3 id="d">00</h3><small>Hari</small></div>
-      <div><h3 id="h">00</h3><small>Jam</small></div>
-      <div><h3 id="m">00</h3><small>Menit</small></div>
-      <div><h3 id="s">00</h3><small>Detik</small></div>
+      <h1>Lucy & Windy</h1>
+      <p class="date">Minggu, Coming Soon 2027</p>
+
+      <button class="open-btn">Buka Undangan</button>
     </div>
-
-    <p style="margin-top:20px;font-style:italic">
-      “Mugi tansah pinaringan katresnan, sakinah mawaddah warahmah”
-    </p>
-  </div>
-</section>
-
-<!-- ===== ACARA ===== -->
-<section id="event">
-  <h2>Akad & Resepsi</h2>
-  <div class="card">
-    <p><b>Waktu:</b> 10.00 WIB – Selesai</p>
-    <p><b>Tempat:</b> Masjid Al Jabar</p>
-    <a href="https://share.google/wSsOLMqf1bbVcrwDs" target="_blank" class="btn" style="margin-top:15px">Google Maps</a>
-  </div>
-</section>
-<div class="batik-divider"></div>
-
-<!-- ===== GALLERY ===== -->
-<section id="gallery">
-  <h2>Galeri</h2>
-  <div class="gallery">
-    <img src="https://source.unsplash.com/600x600/?wedding">
-    <img src="https://source.unsplash.com/601x600/?wedding">
-    <img src="https://source.unsplash.com/602x600/?wedding">
-    <img src="https://source.unsplash.com/603x600/?wedding">
-  </div>
-</section>
-
-<!-- ===== RSVP ===== -->
-<section id="rsvp">
-  <h2>RSVP</h2>
-  <div class="card">
-    <input id="name" placeholder="Nama" style="width:100%;padding:12px"><br><br>
-    <textarea id="msg" placeholder="Ucapan" style="width:100%;padding:12px"></textarea><br><br>
-    <button class="btn" onclick="sendWA()">Kirim via WhatsApp</button>
-  </div>
-</section>
-
-<!-- ===== AMPLOP ===== -->
-<section id="gift">
-  <h2>Amplop Digital</h2>
-  <div class="card">
-    <p>BCA - Rekening</p>
-    <p>a.n. Rekenings </p>
-    <button class="btn" onclick="copyRek()">Salin No Rekening</button>
-  </div>
-</section>
-
-<footer>
-  <div class="gunungan" style="opacity:.5"></div>
-  Maturnuwun & Hatur Nuhun atas doa restu 🙏
-</footer>
-
-<!-- ===== NAV ===== -->
-<div class="nav-bottom">
-  <a href="#hero"><i class="fa fa-home"></i></a>
-  <a href="#event"><i class="fa fa-calendar"></i></a>
-  <a href="#gallery"><i class="fa fa-image"></i></a>
-  <a href="#rsvp"><i class="fa fa-paper-plane"></i></a>
-  <a href="#gift"><i class="fa fa-gift"></i></a>
-</div>
-
-<script>
-  /* Nama tamu dari ?to= */
-  const params = new URLSearchParams(window.location.search);
-  document.getElementById("guestName").innerText =
-    params.get("to") || "Tamu Undangan";
-
-  function openInvitation(){
-    document.getElementById("opening").style.display="none";
-    document.getElementById("music").play();
-  }
-
-  /* Countdown */
-  const target = new Date("2025-08-25T10:00:00+07:00").getTime();
-  setInterval(()=>{
-    const now = new Date().getTime();
-    let diff = target - now;
-    if(diff < 0) diff = 0;
-    document.getElementById("d").innerText = Math.floor(diff/(1000*60*60*24));
-    document.getElementById("h").innerText = Math.floor(diff/(1000*60*60)%24);
-    document.getElementById("m").innerText = Math.floor(diff/(1000*60)%60);
-    document.getElementById("s").innerText = Math.floor(diff/1000%60);
-  },1000);
-
-  function sendWA(){
-    const name = document.getElementById("name").value;
-    const msg = document.getElementById("msg").value;
-    const text = `Halo saya ${name}%0A${msg}`;
-    window.open("https://wa.me/6281234567890?text="+text);
-  }
-
-  function copyRek(){
-    navigator.clipboard.writeText("1234567890");
-    alert("Nomor rekening disalin");
-  }
-</script>
+  </section>
 
 </body>
 </html>
-
-
-
-
-
